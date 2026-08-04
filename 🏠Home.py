@@ -297,37 +297,44 @@ st.markdown(
 cards_html = """
 <div class="cards-grid">
     <!-- Dotación -->
-    <a href="Dotación" target="_self" class="nav-card card-cyan">
+    <a href="https://datastudio.google.com/u/0/reporting/4dbaf434-c14f-404a-8dc1-3a8b60493e9b/page/p_q8rizdfu3d" target="_blank" class="nav-card card-cyan">
         <div class="card-icon">👥</div>
         <div class="card-title">Dotación</div>
         <div class="card-desc">Consulta la estructura y distribución geográfica y por gerencia de personal.</div>
         <div class="go-btn">➜</div>
     </a>
     <!-- Horas Extras -->
-    <a href="Horas_Extras" target="_self" class="nav-card card-indigo">
+    <a href="https://datastudio.google.com/u/0/reporting/e9f3e7b1-abc2-4340-9e9d-7ab34acdd37e/page/p_g4bdxiyn3d" target="_blank" class="nav-card card-indigo">
         <div class="card-icon">⏰</div>
         <div class="card-title">Horas Extras</div>
         <div class="card-desc">Analiza el impacto de horas adicionales al 50% y al 100%.</div>
         <div class="go-btn">➜</div>
     </a>
     <!-- Masa Salarial -->
-    <a href="Masa_Salarial" target="_self" class="nav-card card-violet">
+    <a href="https://datastudio.google.com/u/0/reporting/01d0ae36-7afd-4808-af5e-62ed86d6b6a8/page/p_9w1co7ys5d" target="_blank" class="nav-card card-violet">
         <div class="card-icon">💸</div>
         <div class="card-title">Masa Salarial</div>
         <div class="card-desc">Visualiza la composición, evolución y proyecciones de costos salariales.</div>
         <div class="go-btn">➜</div>
     </a>
     <!-- Planta de Cargos -->
-    <a href="Planta_de_Cargos" target="_self" class="nav-card card-slate">
+    <a href="https://datastudio.google.com/u/0/reporting/1d6aef6a-60a4-431a-a3b4-d123326b08e9/page/p_q9g37hfx5d" target="_blank" class="nav-card card-slate">
         <div class="card-icon">📊</div>
         <div class="card-title">Planta de Cargos</div>
         <div class="card-desc">Analiza la dinámica de ingresos y egresos, y la composición detallada.</div>
         <div class="go-btn">➜</div>
     </a>
-    <!-- Indicadores -->
-    <a href="Indicadores_de_Eficiencia" target="_self" class="nav-card card-blue">
+    <!-- Ausentismo -->
+    <a href="https://datastudio.google.com/u/0/reporting/5b7aa567-6e22-470d-82ed-037033e93d9d/page/p_g64w8hmi5d" target="_blank" class="nav-card card-blue">
         <div class="card-icon">🎯</div>
-        <div class="card-title">Indicadores de Eficiencia</div>
+        <div class="card-title">Ausentismo</div>
+        <div class="card-desc">Mide el rendimiento y la productividad a través de KPIs clave.</div>
+        <div class="go-btn">➜</div>
+    </a>
+    <!-- Guardias 3T vs Horas Extras -->
+    <a href="https://datastudio.google.com/u/0/reporting/3206a509-6a38-424b-bf14-48cea3df3e9e/page/p_i276woun3d" target="_blank" class="nav-card card-blue">
+        <div class="card-icon">🎯</div>
+        <div class="card-title">Ausentismo</div>
         <div class="card-desc">Mide el rendimiento y la productividad a través de KPIs clave.</div>
         <div class="go-btn">➜</div>
     </a>
