@@ -333,7 +333,7 @@ cards_html = """
     </a>
     <!-- Guardias 3T vs Horas Extras -->
     <a href="https://datastudio.google.com/u/0/reporting/3206a509-6a38-424b-bf14-48cea3df3e9e/page/p_i276woun3d" target="_blank" class="nav-card card-blue">
-        <div class="card-icon">⛑️</div>
+        <div class="card-icon"> 👷 </div>
         <div class="card-title">Guardias 3T vs Horas Extras</div>
         <div class="card-desc">Mide el rendimiento y la productividad a través de KPIs clave.</div>
         <div class="go-btn">➜</div>
