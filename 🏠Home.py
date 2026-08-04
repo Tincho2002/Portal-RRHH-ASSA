@@ -326,14 +326,14 @@ cards_html = """
     </a>
     <!-- Ausentismo -->
     <a href="https://datastudio.google.com/u/0/reporting/5b7aa567-6e22-470d-82ed-037033e93d9d/page/p_g64w8hmi5d" target="_blank" class="nav-card card-blue">
-        <div class="card-icon">🎯</div>
+        <div class="card-icon">📅</div>
         <div class="card-title">Ausentismo</div>
         <div class="card-desc">Mide el rendimiento y la productividad a través de KPIs clave.</div>
         <div class="go-btn">➜</div>
     </a>
     <!-- Guardias 3T vs Horas Extras -->
     <a href="https://datastudio.google.com/u/0/reporting/3206a509-6a38-424b-bf14-48cea3df3e9e/page/p_i276woun3d" target="_blank" class="nav-card card-blue">
-        <div class="card-icon">🎯</div>
+        <div class="card-icon">历史</div>
         <div class="card-title">Guardias 3T vs Horas Extras</div>
         <div class="card-desc">Mide el rendimiento y la productividad a través de KPIs clave.</div>
         <div class="go-btn">➜</div>
@@ -348,4 +348,4 @@ st.html(cards_html)
 st.markdown("---")
 st.markdown('</div>', unsafe_allow_html=True) # Cierre main-content
 
-st.sidebar.success("Selecciona una aplicación arriba.")
+st.sidebar.success("Selecciona una aplicación de las tarjetas de la derecha 👉.")
