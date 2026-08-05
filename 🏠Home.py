@@ -170,6 +170,7 @@ st.markdown("""
     .card-slate .card-icon { color: #94a3b8; box-shadow: 0 0 12px rgba(148,163,184,0.1); }
     .card-blue .card-icon { color: #3b82f6; box-shadow: 0 0 12px rgba(59,130,246,0.1); }
     .card-orange .card-icon { color: #f97316; box-shadow: 0 0 12px rgba(249,115,22,0.1); }
+    .card-orange .card-icon { color: #f97316; box-shadow: 0 0 12px rgba(249,115,22,0.1); }
 
     .nav-card:hover .card-icon {
         transform: scale(1.1) rotate(5deg);
