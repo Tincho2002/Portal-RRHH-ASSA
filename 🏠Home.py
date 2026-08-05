@@ -104,19 +104,21 @@ st.markdown("""
     .cards-grid {
         display: flex;
         flex-wrap: wrap;
-        gap: 20px;
+        gap: 18px;
         justify-content: center;
+        max-width: 1100px;
+        margin: 0 auto;
         perspective: 1000px;
         padding: 10px 0;
         font-family: 'Source Sans Pro', sans-serif;
     }
 
-    /* Tarjeta Dark más compacta */
+    /* Tarjeta Dark más compacta para que entren 4 y 3 por fila */
     .nav-card {
         background: #161b22;
         border-radius: 12px;
-        padding: 20px 18px;
-        width: 230px; 
+        padding: 18px 15px;
+        width: 225px; 
         text-decoration: none !important;
         color: #f8fafc !important;
         box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
@@ -129,7 +131,6 @@ st.markdown("""
         align-items: center;
         text-align: center;
         flex-grow: 0; 
-        max-width: 260px;
         cursor: pointer;
     }
 
@@ -148,7 +149,7 @@ st.markdown("""
     .card-slate { border-top: 4px solid #64748b; }
     .card-blue { border-top: 4px solid #3b82f6; }
     .card-orange { border-top: 4px solid #f97316; }
-    .card-orange { border-top: 4px solid #f97316; }
+    .card-teal { border-top: 4px solid #14b8a6; }
 
     /* Iconos más chicos y estilizados */
     .card-icon {
@@ -171,14 +172,14 @@ st.markdown("""
     .card-slate .card-icon { color: #94a3b8; box-shadow: 0 0 12px rgba(148,163,184,0.1); }
     .card-blue .card-icon { color: #3b82f6; box-shadow: 0 0 12px rgba(59,130,246,0.1); }
     .card-orange .card-icon { color: #f97316; box-shadow: 0 0 12px rgba(249,115,22,0.1); }
-    .card-orange .card-icon { color: #f97316; box-shadow: 0 0 12px rgba(249,115,22,0.1); }
+    .card-teal .card-icon { color: #14b8a6; box-shadow: 0 0 12px rgba(20,184,166,0.1); }
 
     .nav-card:hover .card-icon {
         transform: scale(1.1) rotate(5deg);
     }
 
     .card-title {
-        font-size: 1.05rem;
+        font-size: 0.98rem;
         font-weight: 700;
         margin-bottom: 8px;
         color: #ffffff;
@@ -187,7 +188,7 @@ st.markdown("""
     }
 
     .card-desc {
-        font-size: 0.83rem;
+        font-size: 0.8rem;
         color: #94a3b8;
         margin-bottom: 15px;
         line-height: 1.35;
@@ -198,13 +199,13 @@ st.markdown("""
     .go-btn {
         background-color: #21262d;
         border-radius: 50%;
-        width: 32px;
-        height: 32px;
+        width: 30px;
+        height: 30px;
         display: flex;
         align-items: center;
         justify-content: center;
         box-shadow: 0 3px 8px rgba(0,0,0,0.3);
-        font-size: 0.95rem;
+        font-size: 0.9rem;
         color: #8b949e;
         transition: all 0.3s ease;
         align-self: center;
@@ -314,7 +315,7 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-# --- TARJETAS COMPACTAS (ESTILO DARK LOOKER CON OPERARIO ANIMADO) ---
+# --- TARJETAS COMPACTAS (ESTILO DARK LOOKER) ---
 cards_html = """
 <div class="cards-grid">
     <!-- Dotación -->
@@ -362,12 +363,10 @@ cards_html = """
         <div class="go-btn">➜</div>
     </a>
     <!-- Indicadores de Eficiencia -->
-    <a href="">
-        <div class="card-icon">
-            <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f477_1f3fc/512.gif" width="45" height="45" alt="👷">
-        </div>
+    <a href="#" target="_blank" class="nav-card card-teal">
+        <div class="card-icon">📈</div>
         <div class="card-title">Indicadores de Eficiencia</div>
-        <div class="card-desc">En construcción.</div>
+        <div class="card-desc">Módulo de rendimiento y métricas clave en construcción.</div>
         <div class="go-btn">➜</div>
     </a>
 </div>
