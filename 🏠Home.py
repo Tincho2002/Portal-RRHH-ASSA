@@ -148,6 +148,7 @@ st.markdown("""
     .card-slate { border-top: 4px solid #64748b; }
     .card-blue { border-top: 4px solid #3b82f6; }
     .card-orange { border-top: 4px solid #f97316; }
+    .card-orange { border-top: 4px solid #f97316; }
 
     /* Iconos más chicos y estilizados */
     .card-icon {
