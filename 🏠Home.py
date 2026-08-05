@@ -8,17 +8,18 @@ st.set_page_config(
 )
 
 # ----------------------------------------------------------------------------------
-# --- CSS: PANTALLA DE CARGA, ANIMACIONES Y TARJETAS ESTILO DARK LOOKER ---
+# --- CSS: PANTALLA DE CARGA, ANIMACIONES Y TARJETAS COMPACTAS DARK ---
 # ----------------------------------------------------------------------------------
 st.markdown("""
 <style>
     /* Importar fuente moderna */
     @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700&display=swap');
 
-    /* =========================================
-       1. ESTILOS DE ANIMACIÓN (SPLASH & UI)
-       ========================================= */
-    
+    /* Ocultar por completo la barra lateral nativa de Streamlit */
+    [data-testid="stSidebar"] {
+        display: none;
+    }
+
     /* Pantalla de Carga (Splash Screen) con fondo oscuro/corporativo */
     #splash-screen {
         position: fixed;
@@ -96,40 +97,29 @@ st.markdown("""
         to { opacity: 1; }
     }
 
-    /* Animación UI */
-    [data-testid="stSidebar"],
-    [data-testid="stHeader"] {
-        opacity: 0; 
-        transform: translateY(-20px); 
-        animation: showUI 0.75s ease-out 2.5s forwards;
-    }
-    @keyframes showUI {
-        to { opacity: 1; transform: translateY(0); }
-    }
-
     /* =========================================
-       2. TARJETAS ESTILO DARK / LOOKER STUDIO
+       2. TARJETAS MÁS PEQUEÑAS Y COMPACTAS
        ========================================= */
     
     .cards-grid {
         display: flex;
         flex-wrap: wrap;
-        gap: 25px;
+        gap: 20px;
         justify-content: center;
         perspective: 1000px;
-        padding: 20px 0;
+        padding: 10px 0;
         font-family: 'Source Sans Pro', sans-serif;
     }
 
-    /* Tarjeta Dark Base con borde neón sutil */
+    /* Tarjeta Dark más compacta */
     .nav-card {
         background: #161b22;
-        border-radius: 14px;
-        padding: 30px 25px;
-        width: 280px; 
+        border-radius: 12px;
+        padding: 20px 18px;
+        width: 230px; 
         text-decoration: none !important;
         color: #f8fafc !important;
-        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
         transition: all 0.35s cubic-bezier(0.25, 0.8, 0.25, 1);
         border: 1px solid #30363d;
         position: relative;
@@ -138,16 +128,16 @@ st.markdown("""
         flex-direction: column;
         align-items: center;
         text-align: center;
-        flex-grow: 1; 
-        max-width: 350px;
+        flex-grow: 0; 
+        max-width: 260px;
         cursor: pointer;
     }
 
     /* Efecto Hover Luminoso tipo Panel Looker */
     .nav-card:hover {
-        transform: translateY(-8px) scale(1.02);
+        transform: translateY(-6px) scale(1.02);
         background: #1c2128;
-        box-shadow: 0 12px 35px rgba(0, 212, 255, 0.15);
+        box-shadow: 0 10px 30px rgba(0, 212, 255, 0.15);
         border-color: #00d4ff;
     }
 
@@ -159,60 +149,60 @@ st.markdown("""
     .card-blue { border-top: 4px solid #3b82f6; }
     .card-orange { border-top: 4px solid #f97316; }
 
-    /* Iconos modernos y luminosos */
+    /* Iconos más chicos y estilizados */
     .card-icon {
-        font-size: 2.8rem;
-        margin-bottom: 18px;
+        font-size: 2.2rem;
+        margin-bottom: 12px;
         transition: transform 0.4s ease;
-        padding: 12px;
+        padding: 8px;
         border-radius: 50%;
         background: rgba(255, 255, 255, 0.03);
-        width: 75px;
-        height: 75px;
+        width: 55px;
+        height: 55px;
         display: flex;
         align-items: center;
         justify-content: center;
     }
     
-    .card-cyan .card-icon { color: #00d4ff; box-shadow: 0 0 15px rgba(0,212,255,0.1); }
-    .card-indigo .card-icon { color: #6366f1; box-shadow: 0 0 15px rgba(99,102,241,0.1); }
-    .card-violet .card-icon { color: #a855f7; box-shadow: 0 0 15px rgba(168,85,247,0.1); }
-    .card-slate .card-icon { color: #94a3b8; box-shadow: 0 0 15px rgba(148,163,184,0.1); }
-    .card-blue .card-icon { color: #3b82f6; box-shadow: 0 0 15px rgba(59,130,246,0.1); }
-    .card-orange .card-icon { color: #f97316; box-shadow: 0 0 15px rgba(249,115,22,0.1); }
+    .card-cyan .card-icon { color: #00d4ff; box-shadow: 0 0 12px rgba(0,212,255,0.1); }
+    .card-indigo .card-icon { color: #6366f1; box-shadow: 0 0 12px rgba(99,102,241,0.1); }
+    .card-violet .card-icon { color: #a855f7; box-shadow: 0 0 12px rgba(168,85,247,0.1); }
+    .card-slate .card-icon { color: #94a3b8; box-shadow: 0 0 12px rgba(148,163,184,0.1); }
+    .card-blue .card-icon { color: #3b82f6; box-shadow: 0 0 12px rgba(59,130,246,0.1); }
+    .card-orange .card-icon { color: #f97316; box-shadow: 0 0 12px rgba(249,115,22,0.1); }
 
     .nav-card:hover .card-icon {
-        transform: scale(1.12) rotate(5deg);
+        transform: scale(1.1) rotate(5deg);
     }
 
     .card-title {
-        font-size: 1.2rem;
+        font-size: 1.05rem;
         font-weight: 700;
-        margin-bottom: 10px;
+        margin-bottom: 8px;
         color: #ffffff;
         text-transform: uppercase;
-        letter-spacing: 0.8px;
+        letter-spacing: 0.6px;
     }
 
     .card-desc {
-        font-size: 0.9rem;
+        font-size: 0.83rem;
         color: #94a3b8;
-        margin-bottom: 20px;
-        line-height: 1.4;
+        margin-bottom: 15px;
+        line-height: 1.35;
         flex-grow: 1; 
     }
 
-    /* Botón de acceso circular estilo Dark */
+    /* Botón de acceso circular compacto */
     .go-btn {
         background-color: #21262d;
         border-radius: 50%;
-        width: 40px;
-        height: 40px;
+        width: 32px;
+        height: 32px;
         display: flex;
         align-items: center;
         justify-content: center;
-        box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-        font-size: 1.1rem;
+        box-shadow: 0 3px 8px rgba(0,0,0,0.3);
+        font-size: 0.95rem;
         color: #8b949e;
         transition: all 0.3s ease;
         align-self: center;
@@ -223,7 +213,7 @@ st.markdown("""
     .nav-card:hover .go-btn {
         background-color: #00d4ff;
         color: #0d1117;
-        box-shadow: 0 0 12px rgba(0,212,255,0.5);
+        box-shadow: 0 0 10px rgba(0,212,255,0.5);
         border-color: #00d4ff;
         transform: scale(1.1);
     }
@@ -237,11 +227,11 @@ st.markdown("""
         padding: 10px 0;
     }
     .header-text { text-align: center; flex-grow: 1; }
-    .header-logo { width: 190px; flex-shrink: 0; height: auto; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.5); border: 1px solid #30363d; }
+    .header-logo { width: 170px; flex-shrink: 0; height: auto; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.5); border: 1px solid #30363d; }
 
     @media (max-width: 768px) {
         .header-container { flex-direction: column; justify-content: center; }
-        .header-logo { width: 160px; }
+        .header-logo { width: 140px; }
         .cards-grid { flex-direction: column; align-items: center; }
         .nav-card { width: 100%; max-width: 100%; }
     }
@@ -264,7 +254,7 @@ st.html("""
             splash.appendChild(droplet);
         }
     </script>
-    <img id="splash-logo" src="https://cdn.jsdelivr.net/gh/Tincho2002/RRHH@main/assets/logo_assa.jpg" width="450">
+    <img id="splash-logo" src="https://cdn.jsdelivr.net/gh/Tincho2002/RRHH@main/assets/logo_assa.jpg" width="400">
     <h1 id="splash-title">Portal de Análisis de RRHH - ASSA</h1>
 </div>
 """)
@@ -280,70 +270,70 @@ st.markdown(f"""
 <div class="header-container">
     <img src="{logo_url}" class="header-logo logo-left">
     <div class="header-text">
-        <h1 style='color:#f8fafc; font-size: 2.3rem; margin:0; font-weight: 700;'>Bienvenido al Portal de RRHH</h1>
-        <h3 style='color:#00d4ff; margin:8px 0; font-size: 1.2rem; font-weight: 600;'>Tableros de Control & Análisis Estratégico</h3>
-        <h4 style='color:#94a3b8; margin:0; font-weight: 400;'>Aguas Santafesinas S.A.</h4>
+        <h1 style='color:#f8fafc; font-size: 2.1rem; margin:0; font-weight: 700;'>Bienvenido al Portal de RRHH</h1>
+        <h3 style='color:#00d4ff; margin:6px 0; font-size: 1.1rem; font-weight: 600;'>Tableros de Control & Análisis Estratégico</h3>
+        <h4 style='color:#94a3b8; margin:0; font-weight: 400; font-size: 0.95rem;'>Aguas Santafesinas S.A.</h4>
     </div>
     <img src="{logo_url}" class="header-logo logo-right">
 </div>
 """, unsafe_allow_html=True)
 
-st.markdown("<hr style='border-color: #30363d; margin: 30px 0;'>", unsafe_allow_html=True)
+st.markdown("<hr style='border-color: #30363d; margin: 25px 0;'>", unsafe_allow_html=True)
 
 # Texto Intro
 st.markdown(
     """
-    <div style="text-align: center; margin-bottom: 40px;">
-        <h2 style="color: #f8fafc; font-size: 1.6rem; font-weight: 600;">Central Operativa de Capital Humano</h2>
-        <p style="color: #94a3b8; font-size: 1.05rem;">Selecciona una de las tarjetas interactivas para acceder de forma directa a los reportes actualizados.</p>
+    <div style="text-align: center; margin-bottom: 30px;">
+        <h2 style="color: #f8fafc; font-size: 1.4rem; font-weight: 600;">Central Operativa de Capital Humano</h2>
+        <p style="color: #94a3b8; font-size: 1rem;">Selecciona una de las tarjetas interactivas para acceder de forma directa a los reportes actualizados.</p>
     </div>
     """,
     unsafe_allow_html=True
 )
 
-# --- TARJETAS (ESTILO DARK LOOKER) ---
+# --- TARJETAS COMPACTAS (ESTILO DARK LOOKER) ---
 cards_html = """
 <div class="cards-grid">
     <!-- Dotación -->
     <a href="https://datastudio.google.com/u/0/reporting/4dbaf434-c14f-404a-8dc1-3a8b60493e9b/page/p_q8rizdfu3d" target="_blank" class="nav-card card-cyan">
         <div class="card-icon">👥</div>
         <div class="card-title">Dotación</div>
-        <div class="card-desc">Estructura y distribución geográfica y por gerencia de personal.</div>
+        <div class="card-desc">Estructura y distribución geográfica y por gerencia.</div>
         <div class="go-btn">➜</div>
     </a>
     <!-- Horas Extras -->
     <a href="https://datastudio.google.com/u/0/reporting/e9f3e7b1-abc2-4340-9e9d-7ab34acdd37e/page/p_g4bdxiyn3d" target="_blank" class="nav-card card-indigo">
         <div class="card-icon">⏰</div>
         <div class="card-title">Horas Extras</div>
-        <div class="card-desc">Impacto y seguimiento de horas adicionales al 50% y al 100%.</div>
+        <div class="card-desc">Seguimiento de horas adicionales al 50% y 100%.</div>
         <div class="go-btn">➜</div>
     </a>
     <!-- Masa Salarial -->
     <a href="https://datastudio.google.com/u/0/reporting/01d0ae36-7afd-4808-af5e-62ed86d6b6a8/page/p_9w1co7ys5d" target="_blank" class="nav-card card-violet">
         <div class="card-icon">💸</div>
         <div class="card-title">Masa Salarial</div>
-        <div class="card-desc">Composición, evolución y proyecciones de costos salariales.</div>
+        <div class="card-desc">Evolución y proyecciones de costos salariales.</div>
         <div class="go-btn">➜</div>
     </a>
     <!-- Planta de Cargos -->
     <a href="https://datastudio.google.com/u/0/reporting/1d6aef6a-60a4-431a-a3b4-d123326b08e9/page/p_q9g37hfx5d" target="_blank" class="nav-card card-slate">
         <div class="card-icon">📊</div>
         <div class="card-title">Planta de Cargos</div>
-        <div class="card-desc">Dinámica de ingresos, egresos y composición detallada.</div>
+        <div class="card-desc">Dinámica de ingresos, egresos y composición.</div>
         <div class="go-btn">➜</div>
     </a>
     <!-- Ausentismo -->
     <a href="https://datastudio.google.com/u/0/reporting/5b7aa567-6e22-470d-82ed-037033e93d9d/page/p_g64w8hmi5d" target="_blank" class="nav-card card-blue">
         <div class="card-icon">📅</div>
         <div class="card-title">Ausentismo</div>
-        <div class="card-desc">Rendimiento y control de indicadores clave de ausentismo.</div>
+        <div class="card-desc">Control de indicadores clave de ausentismo.</div>
         <div class="go-btn">➜</div>
     </a>
     <!-- Guardias 3T vs Horas Extras -->
     <a href="https://datastudio.google.com/u/0/reporting/3206a509-6a38-424b-bf14-48cea3df3e9e/page/p_i276woun3d" target="_blank" class="nav-card card-orange">
         <div class="card-icon">👷</div>
         <div class="card-title">Guardias 3T</div>
-        <div class="card-desc">Comparativa de turnos rotativos y optimización operativa.</div>
+        <div class="card-desc">Comparativa de turnos rotativos y optimización.</div>
         <div class="go-btn">➜</div>
     </a>
 </div>
@@ -351,7 +341,5 @@ cards_html = """
 
 st.html(cards_html)
 
-st.markdown("<hr style='border-color: #30363d; margin: 40px 0;'>", unsafe_allow_html=True)
+st.markdown("<hr style='border-color: #30363d; margin: 30px 0;'>", unsafe_allow_html=True)
 st.markdown('</div>', unsafe_allow_html=True) # Cierre main-content
-
-st.sidebar.success("Selecciona una aplicación de las tarjetas de la derecha 👉.")
