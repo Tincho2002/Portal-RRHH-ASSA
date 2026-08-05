@@ -218,7 +218,7 @@ st.markdown("""
         transform: scale(1.1);
     }
     
-    /* Header Responsive */
+    /* Header Responsive Alineado al Centro */
     .header-container {
         display: flex;
         justify-content: space-between;
@@ -227,7 +227,28 @@ st.markdown("""
         padding: 10px 0;
     }
     .header-text { text-align: center; flex-grow: 1; }
-    .header-logo { width: 170px; flex-shrink: 0; height: auto; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.5); border: 1px solid #30363d; }
+    .header-logo { width: 170px; flex-shrink: 0; height: auto; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.5); border: 1px solid #30363d; align-self: center; }
+
+    /* Estilo para la píldora de versión / estado */
+    .status-badge {
+        display: inline-flex;
+        align-items: center;
+        background-color: #161b22;
+        border: 1px solid #30363d;
+        padding: 6px 14px;
+        border-radius: 20px;
+        font-size: 0.82rem;
+        color: #8b949e;
+        gap: 8px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+    .status-dot {
+        width: 8px;
+        height: 8px;
+        background-color: #00d4ff;
+        border-radius: 50%;
+        box-shadow: 0 0 8px #00d4ff;
+    }
 
     @media (max-width: 768px) {
         .header-container { flex-direction: column; justify-content: center; }
@@ -264,7 +285,7 @@ st.html("""
 # -----------------------------------------------------------------------
 st.markdown('<div id="main-content">', unsafe_allow_html=True)
 
-# Header
+# Header perfectamente alineado
 logo_url = "https://cdn.jsdelivr.net/gh/Tincho2002/RRHH@main/assets/logo_assa.jpg"
 st.markdown(f"""
 <div class="header-container">
@@ -283,7 +304,7 @@ st.markdown("<hr style='border-color: #30363d; margin: 25px 0;'>", unsafe_allow_
 # Texto Intro
 st.markdown(
     """
-    <div style="text-align: center; margin-bottom: 30px;">
+    <div style="text-align: center; margin-bottom: 25px;">
         <h2 style="color: #f8fafc; font-size: 1.4rem; font-weight: 600;">Central Operativa de Capital Humano</h2>
         <p style="color: #94a3b8; font-size: 1rem;">Selecciona una de las tarjetas interactivas para acceder de forma directa a los reportes actualizados.</p>
     </div>
@@ -341,5 +362,15 @@ cards_html = """
 
 st.html(cards_html)
 
-st.markdown("<hr style='border-color: #30363d; margin: 30px 0;'>", unsafe_allow_html=True)
+# --- PIé DE PÁGINA PROFESIONAL CON BADGE DE ESTADO ---
+st.markdown("<hr style='border-color: #30363d; margin: 30px 0 20px 0;'>", unsafe_allow_html=True)
+st.markdown("""
+<div style="display: flex; justify-content: center; align-items: center; padding-bottom: 20px;">
+    <div class="status-badge">
+        <div class="status-dot"></div>
+        <span>Sistema Activo • Módulo RRHH ASSA</span>
+    </div>
+</div>
+""", unsafe_allow_html=True)
+
 st.markdown('</div>', unsafe_allow_html=True) # Cierre main-content
