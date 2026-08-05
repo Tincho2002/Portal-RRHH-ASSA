@@ -8,7 +8,7 @@ st.set_page_config(
 )
 
 # ----------------------------------------------------------------------------------
-# --- CSS: PANTALLA DE CARGA, ANIMACIONES Y NUEVAS TARJETAS ---
+# --- CSS: PANTALLA DE CARGA, ANIMACIONES Y TARJETAS ESTILO DARK LOOKER ---
 # ----------------------------------------------------------------------------------
 st.markdown("""
 <style>
@@ -19,34 +19,37 @@ st.markdown("""
        1. ESTILOS DE ANIMACIÓN (SPLASH & UI)
        ========================================= */
     
-    /* Pantalla de Carga (Splash Screen) */
+    /* Pantalla de Carga (Splash Screen) con fondo oscuro/corporativo */
     #splash-screen {
         position: fixed;
         top: 0;
         left: 0;
         width: 100vw;
         height: 100vh;
-        background: linear-gradient(180deg, #005A7A, #00A7C4);
-        z-index: 9999; /* Z-index alto para tapar todo */
+        background: linear-gradient(135deg, #0d1117, #161b22, #1f242d);
+        z-index: 9999;
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
         color: white;
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        font-family: 'Source Sans Pro', sans-serif;
         
-        /* Animación de salida: se va hacia arriba */
         animation: slideUpSplash 1s ease-out 2.5s forwards;
     }
 
     #splash-logo {
-        border-radius: 25px;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        border-radius: 20px;
+        box-shadow: 0 10px 30px rgba(0, 212, 255, 0.2);
+        border: 2px solid rgba(0, 212, 255, 0.3);
         animation: fadeInScale 1.5s 0.5s ease-out forwards;
     }
 
     #splash-title {
         margin-top: 20px;
+        color: #00d4ff;
+        font-weight: 700;
+        letter-spacing: 1px;
         animation: fadeInSlide 1.5s 1s ease-out forwards;
     }
 
@@ -65,19 +68,25 @@ st.markdown("""
         to { opacity: 1; transform: translateY(0); }
     }
 
-    /* Animación de Gotas */
+    /* Animación de Gotas de Agua / Estilo Looker */
     .droplet {
         position: absolute;
         bottom: 100%;
         width: 2px;
         height: 50px;
-        background: linear-gradient(to top, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.1));
+        background: linear-gradient(to top, rgba(0, 212, 255, 0.8), rgba(0, 212, 255, 0.1));
         border-radius: 50%;
         animation: fall linear infinite;
     }
     @keyframes fall { to { transform: translateY(100vh); } }
 
-    /* --- Estilos del Contenido Principal (Fade In) --- */
+    /* --- Fondo Global Oscuro (Look Looker Studio) --- */
+    .stApp {
+        background-color: #0e1117 !important;
+        color: #e2e8f0;
+    }
+
+    /* --- Animación del Contenido Principal --- */
     #main-content {
         opacity: 0; 
         animation: showContent 1.5s ease-in 2.5s forwards;
@@ -87,7 +96,7 @@ st.markdown("""
         to { opacity: 1; }
     }
 
-    /* Animación para la UI (Barra Lateral y Cabecera) */
+    /* Animación UI */
     [data-testid="stSidebar"],
     [data-testid="stHeader"] {
         opacity: 0; 
@@ -98,12 +107,10 @@ st.markdown("""
         to { opacity: 1; transform: translateY(0); }
     }
 
-
     /* =========================================
-       2. ESTILOS DE LAS TARJETAS (NUEVO DISEÑO)
+       2. TARJETAS ESTILO DARK / LOOKER STUDIO
        ========================================= */
     
-    /* Grid Flexbox Responsivo */
     .cards-grid {
         display: flex;
         flex-wrap: wrap;
@@ -114,17 +121,17 @@ st.markdown("""
         font-family: 'Source Sans Pro', sans-serif;
     }
 
-    /* Tarjeta Base */
+    /* Tarjeta Dark Base con borde neón sutil */
     .nav-card {
-        background: white;
-        border-radius: 16px;
+        background: #161b22;
+        border-radius: 14px;
         padding: 30px 25px;
         width: 280px; 
         text-decoration: none !important;
-        color: #333;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-        transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-        border: 1px solid rgba(255,255,255,0.6);
+        color: #f8fafc !important;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+        transition: all 0.35s cubic-bezier(0.25, 0.8, 0.25, 1);
+        border: 1px solid #30363d;
         position: relative;
         overflow: hidden;
         display: flex;
@@ -136,84 +143,88 @@ st.markdown("""
         cursor: pointer;
     }
 
-    /* Efecto Hover */
+    /* Efecto Hover Luminoso tipo Panel Looker */
     .nav-card:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        transform: translateY(-8px) scale(1.02);
+        background: #1c2128;
+        box-shadow: 0 12px 35px rgba(0, 212, 255, 0.15);
+        border-color: #00d4ff;
     }
 
-    /* --- PALETA DE COLORES (Gama Azul/Violeta) --- */
-    
-    /* Dotación (Cyan) */
-    .card-cyan { background: linear-gradient(145deg, #ffffff 0%, #e0f7fa 100%); border-top: 6px solid #00bcd4; }
-    .card-cyan .card-icon { color: #00bcd4; }
-    .card-cyan:hover .go-btn { background-color: #00bcd4; color: white; }
+    /* Estilos de bordes superiores distintivos por tarjeta */
+    .card-cyan { border-top: 4px solid #00d4ff; }
+    .card-indigo { border-top: 4px solid #6366f1; }
+    .card-violet { border-top: 4px solid #a855f7; }
+    .card-slate { border-top: 4px solid #64748b; }
+    .card-blue { border-top: 4px solid #3b82f6; }
+    .card-orange { border-top: 4px solid #f97316; }
 
-    /* Horas Extras (Indigo) */
-    .card-indigo { background: linear-gradient(145deg, #ffffff 0%, #e8eaf6 100%); border-top: 6px solid #3f51b5; }
-    .card-indigo .card-icon { color: #3f51b5; }
-    .card-indigo:hover .go-btn { background-color: #3f51b5; color: white; }
-
-    /* Masa Salarial (Violeta) */
-    .card-violet { background: linear-gradient(145deg, #ffffff 0%, #f3e5f5 100%); border-top: 6px solid #9c27b0; }
-    .card-violet .card-icon { color: #9c27b0; }
-    .card-violet:hover .go-btn { background-color: #9c27b0; color: white; }
-
-    /* Planta de Cargos (Slate) */
-    .card-slate { background: linear-gradient(145deg, #ffffff 0%, #eceff1 100%); border-top: 6px solid #607d8b; }
-    .card-slate .card-icon { color: #607d8b; }
-    .card-slate:hover .go-btn { background-color: #607d8b; color: white; }
-
-    /* Indicadores (Azul) */
-    .card-blue { background: linear-gradient(145deg, #ffffff 0%, #e3f2fd 100%); border-top: 6px solid #2196f3; }
-    .card-blue .card-icon { color: #2196f3; }
-    .card-blue:hover .go-btn { background-color: #2196f3; color: white; }
-
-    /* Elementos Internos */
+    /* Iconos modernos y luminosos */
     .card-icon {
-        font-size: 3.5rem;
-        margin-bottom: 20px;
+        font-size: 2.8rem;
+        margin-bottom: 18px;
         transition: transform 0.4s ease;
-        filter: drop-shadow(0 4px 4px rgba(0,0,0,0.1));
-    }
-    .nav-card:hover .card-icon {
-        transform: scale(1.15) rotate(8deg);
-    }
-
-    .card-title {
-        font-size: 1.3rem;
-        font-weight: 700;
-        margin-bottom: 12px;
-        color: #1e293b;
-        text-transform: uppercase;
-        letter-spacing: 0.5px;
-    }
-
-    .card-desc {
-        font-size: 0.95rem;
-        color: #64748b;
-        margin-bottom: 25px;
-        line-height: 1.5;
-        flex-grow: 1; 
-    }
-
-    .go-btn {
-        background-color: #fff;
+        padding: 12px;
         border-radius: 50%;
-        width: 45px;
-        height: 45px;
+        background: rgba(255, 255, 255, 0.03);
+        width: 75px;
+        height: 75px;
         display: flex;
         align-items: center;
         justify-content: center;
-        box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+    }
+    
+    .card-cyan .card-icon { color: #00d4ff; box-shadow: 0 0 15px rgba(0,212,255,0.1); }
+    .card-indigo .card-icon { color: #6366f1; box-shadow: 0 0 15px rgba(99,102,241,0.1); }
+    .card-violet .card-icon { color: #a855f7; box-shadow: 0 0 15px rgba(168,85,247,0.1); }
+    .card-slate .card-icon { color: #94a3b8; box-shadow: 0 0 15px rgba(148,163,184,0.1); }
+    .card-blue .card-icon { color: #3b82f6; box-shadow: 0 0 15px rgba(59,130,246,0.1); }
+    .card-orange .card-icon { color: #f97316; box-shadow: 0 0 15px rgba(249,115,22,0.1); }
+
+    .nav-card:hover .card-icon {
+        transform: scale(1.12) rotate(5deg);
+    }
+
+    .card-title {
         font-size: 1.2rem;
-        color: #cbd5e1;
+        font-weight: 700;
+        margin-bottom: 10px;
+        color: #ffffff;
+        text-transform: uppercase;
+        letter-spacing: 0.8px;
+    }
+
+    .card-desc {
+        font-size: 0.9rem;
+        color: #94a3b8;
+        margin-bottom: 20px;
+        line-height: 1.4;
+        flex-grow: 1; 
+    }
+
+    /* Botón de acceso circular estilo Dark */
+    .go-btn {
+        background-color: #21262d;
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        font-size: 1.1rem;
+        color: #8b949e;
         transition: all 0.3s ease;
         align-self: center;
         margin-top: auto;
+        border: 1px solid #30363d;
     }
+    
     .nav-card:hover .go-btn {
-        box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+        background-color: #00d4ff;
+        color: #0d1117;
+        box-shadow: 0 0 12px rgba(0,212,255,0.5);
+        border-color: #00d4ff;
         transform: scale(1.1);
     }
     
@@ -223,13 +234,14 @@ st.markdown("""
         justify-content: space-between;
         align-items: center;
         gap: 20px;
+        padding: 10px 0;
     }
     .header-text { text-align: center; flex-grow: 1; }
-    .header-logo { width: 200px; flex-shrink: 0; height: auto; border-radius: 15px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
+    .header-logo { width: 190px; flex-shrink: 0; height: auto; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.5); border: 1px solid #30363d; }
 
     @media (max-width: 768px) {
         .header-container { flex-direction: column; justify-content: center; }
-        .header-logo { width: 180px; }
+        .header-logo { width: 160px; }
         .cards-grid { flex-direction: column; align-items: center; }
         .nav-card { width: 100%; max-width: 100%; }
     }
@@ -243,25 +255,23 @@ st.html("""
 <div id="splash-screen">
     <script>
         const splash = document.getElementById('splash-screen');
-        for (let i = 0; i < 50; i++) {
+        for (let i = 0; i < 40; i++) {
             const droplet = document.createElement('div');
             droplet.className = 'droplet';
             droplet.style.left = `${Math.random() * 100}vw`;
-            droplet.style.animationDuration = `${0.5 + Math.random() * 0.5}s`;
-            droplet.style.animationDelay = `${Math.random() * 4}s`;
+            droplet.style.animationDuration = `${0.6 + Math.random() * 0.4}s`;
+            droplet.style.animationDelay = `${Math.random() * 3}s`;
             splash.appendChild(droplet);
         }
     </script>
-    <img id="splash-logo" src="https://cdn.jsdelivr.net/gh/Tincho2002/RRHH@main/assets/logo_assa.jpg" width="500">
-    <h1 id="splash-title" style="margin-top:20px;">Portal de Análisis de RRHH</h1>
+    <img id="splash-logo" src="https://cdn.jsdelivr.net/gh/Tincho2002/RRHH@main/assets/logo_assa.jpg" width="450">
+    <h1 id="splash-title">Portal de Análisis de RRHH - ASSA</h1>
 </div>
 """)
 
 # -----------------------------------------------------------------------
 # --- CONTENIDO PRINCIPAL ---
 # -----------------------------------------------------------------------
-
-# Envolvemos contenido en div para animación de entrada
 st.markdown('<div id="main-content">', unsafe_allow_html=True)
 
 # Header
@@ -270,82 +280,78 @@ st.markdown(f"""
 <div class="header-container">
     <img src="{logo_url}" class="header-logo logo-left">
     <div class="header-text">
-        <h1 style='color:#555; font-size: 2.5rem; margin:0;'>Bienvenido a la Aplicación de RRHH</h1>
-        <h3 style='color:#555; margin:5px 0;'>Portal de Análisis de Capital Humano</h3>
-        <h3 style='color:#555; margin:0;'>Aguas Santafesinas S.A.</h3>
+        <h1 style='color:#f8fafc; font-size: 2.3rem; margin:0; font-weight: 700;'>Bienvenido al Portal de RRHH</h1>
+        <h3 style='color:#00d4ff; margin:8px 0; font-size: 1.2rem; font-weight: 600;'>Tableros de Control & Análisis Estratégico</h3>
+        <h4 style='color:#94a3b8; margin:0; font-weight: 400;'>Aguas Santafesinas S.A.</h4>
     </div>
     <img src="{logo_url}" class="header-logo logo-right">
 </div>
 """, unsafe_allow_html=True)
 
-st.markdown("---")
+st.markdown("<hr style='border-color: #30363d; margin: 30px 0;'>", unsafe_allow_html=True)
 
 # Texto Intro
 st.markdown(
     """
     <div style="text-align: center; margin-bottom: 40px;">
-        <h2 style="color: #1e293b;">Análisis Estratégico de Capital Humano</h2>
-        <p style="color: #64748b; font-size: 1.1rem;">Esta es la página de inicio del sistema unificado de gestión de <strong>Recursos Humanos</strong>.</p>
-        <p style="color: #64748b; font-size: 1.1rem;">Para acceder a cada módulo, haz clic directamente en la tarjeta de interés o usa la barra lateral.</p>
+        <h2 style="color: #f8fafc; font-size: 1.6rem; font-weight: 600;">Central Operativa de Capital Humano</h2>
+        <p style="color: #94a3b8; font-size: 1.05rem;">Selecciona una de las tarjetas interactivas para acceder de forma directa a los reportes actualizados.</p>
     </div>
     """,
     unsafe_allow_html=True
 )
 
-# --- TARJETAS (HTML) ---
-# DEFINICIÓN DEL HTML EN UNA VARIABLE
+# --- TARJETAS (ESTILO DARK LOOKER) ---
 cards_html = """
 <div class="cards-grid">
     <!-- Dotación -->
     <a href="https://datastudio.google.com/u/0/reporting/4dbaf434-c14f-404a-8dc1-3a8b60493e9b/page/p_q8rizdfu3d" target="_blank" class="nav-card card-cyan">
         <div class="card-icon">👥</div>
         <div class="card-title">Dotación</div>
-        <div class="card-desc">Consulta la estructura y distribución geográfica y por gerencia de personal.</div>
+        <div class="card-desc">Estructura y distribución geográfica y por gerencia de personal.</div>
         <div class="go-btn">➜</div>
     </a>
     <!-- Horas Extras -->
     <a href="https://datastudio.google.com/u/0/reporting/e9f3e7b1-abc2-4340-9e9d-7ab34acdd37e/page/p_g4bdxiyn3d" target="_blank" class="nav-card card-indigo">
         <div class="card-icon">⏰</div>
         <div class="card-title">Horas Extras</div>
-        <div class="card-desc">Analiza el impacto de horas adicionales al 50% y al 100%.</div>
+        <div class="card-desc">Impacto y seguimiento de horas adicionales al 50% y al 100%.</div>
         <div class="go-btn">➜</div>
     </a>
     <!-- Masa Salarial -->
     <a href="https://datastudio.google.com/u/0/reporting/01d0ae36-7afd-4808-af5e-62ed86d6b6a8/page/p_9w1co7ys5d" target="_blank" class="nav-card card-violet">
         <div class="card-icon">💸</div>
         <div class="card-title">Masa Salarial</div>
-        <div class="card-desc">Visualiza la composición, evolución y proyecciones de costos salariales.</div>
+        <div class="card-desc">Composición, evolución y proyecciones de costos salariales.</div>
         <div class="go-btn">➜</div>
     </a>
     <!-- Planta de Cargos -->
     <a href="https://datastudio.google.com/u/0/reporting/1d6aef6a-60a4-431a-a3b4-d123326b08e9/page/p_q9g37hfx5d" target="_blank" class="nav-card card-slate">
         <div class="card-icon">📊</div>
         <div class="card-title">Planta de Cargos</div>
-        <div class="card-desc">Analiza la dinámica de ingresos y egresos, y la composición detallada.</div>
+        <div class="card-desc">Dinámica de ingresos, egresos y composición detallada.</div>
         <div class="go-btn">➜</div>
     </a>
     <!-- Ausentismo -->
     <a href="https://datastudio.google.com/u/0/reporting/5b7aa567-6e22-470d-82ed-037033e93d9d/page/p_g64w8hmi5d" target="_blank" class="nav-card card-blue">
         <div class="card-icon">📅</div>
         <div class="card-title">Ausentismo</div>
-        <div class="card-desc">Mide el rendimiento y la productividad a través de KPIs clave.</div>
+        <div class="card-desc">Rendimiento y control de indicadores clave de ausentismo.</div>
         <div class="go-btn">➜</div>
     </a>
     <!-- Guardias 3T vs Horas Extras -->
-    <a href="https://datastudio.google.com/u/0/reporting/3206a509-6a38-424b-bf14-48cea3df3e9e/page/p_i276woun3d" target="_blank" class="nav-card card-blue">
-        <div class="card-icon"> 👷 </div>
-        <div class="card-title">Guardias 3T vs Horas Extras</div>
-        <div class="card-desc">Mide el rendimiento y la productividad a través de KPIs clave.</div>
+    <a href="https://datastudio.google.com/u/0/reporting/3206a509-6a38-424b-bf14-48cea3df3e9e/page/p_i276woun3d" target="_blank" class="nav-card card-orange">
+        <div class="card-icon">👷</div>
+        <div class="card-title">Guardias 3T</div>
+        <div class="card-desc">Comparativa de turnos rotativos y optimización operativa.</div>
         <div class="go-btn">➜</div>
     </a>
 </div>
 """
 
-# --- AQUÍ ESTÁ LA CORRECCIÓN: USAR st.html PARA RENDERIZAR HTML PURO ---
 st.html(cards_html)
-# -----------------------------------------------------------------------
 
-st.markdown("---")
+st.markdown("<hr style='border-color: #30363d; margin: 40px 0;'>", unsafe_allow_html=True)
 st.markdown('</div>', unsafe_allow_html=True) # Cierre main-content
 
 st.sidebar.success("Selecciona una aplicación de las tarjetas de la derecha 👉.")
