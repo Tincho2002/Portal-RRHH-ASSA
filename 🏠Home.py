@@ -312,7 +312,7 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-# --- TARJETAS COMPACTAS (ESTILO DARK LOOKER) ---
+# --- TARJETAS COMPACTAS (ESTILO DARK LOOKER CON OPERARIO ANIMADO) ---
 cards_html = """
 <div class="cards-grid">
     <!-- Dotación -->
@@ -350,9 +350,11 @@ cards_html = """
         <div class="card-desc">Control de indicadores clave de ausentismo.</div>
         <div class="go-btn">➜</div>
     </a>
-    <!-- Guardias 3T vs Horas Extras -->
+    <!-- Guardias 3T con Operario Animado -->
     <a href="https://datastudio.google.com/u/0/reporting/3206a509-6a38-424b-bf14-48cea3df3e9e/page/p_i276woun3d" target="_blank" class="nav-card card-orange">
-        <div class="card-icon">👷</div>
+        <div class="card-icon">
+            <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f477_1f3fc/512.gif" width="45" height="45" alt="👷">
+        </div>
         <div class="card-title">Guardias 3T</div>
         <div class="card-desc">Comparativa de turnos rotativos y optimización.</div>
         <div class="go-btn">➜</div>
