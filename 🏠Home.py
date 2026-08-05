@@ -355,8 +355,17 @@ cards_html = """
         <div class="card-icon">
             <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f477_1f3fc/512.gif" width="45" height="45" alt="👷">
         </div>
-        <div class="card-title">Guardias 3T</div>
+        <div class="card-title">Guardias 3T vs Horas Extras</div>
         <div class="card-desc">Comparativa de turnos rotativos y optimización.</div>
+        <div class="go-btn">➜</div>
+    </a>
+    <!-- Indicadores de Eficiencia -->
+    <a href="">
+        <div class="card-icon">
+            <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f477_1f3fc/512.gif" width="45" height="45" alt="👷">
+        </div>
+        <div class="card-title">Indicadores de Eficiencia</div>
+        <div class="card-desc">En construcción.</div>
         <div class="go-btn">➜</div>
     </a>
 </div>
