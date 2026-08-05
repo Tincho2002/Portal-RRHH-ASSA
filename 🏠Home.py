@@ -363,7 +363,7 @@ cards_html = """
         <div class="go-btn">➜</div>
     </a>
     <!-- Indicadores de Eficiencia -->
-    <a href="#" target="_blank" class="nav-card card-teal">
+    <a href="https://datastudio.google.com/u/0/reporting/b1c552d6-1a58-4588-9a7d-7ead349d86f5/page/Duh5F" target="_blank" class="nav-card card-teal">
         <div class="card-icon">📈</div>
         <div class="card-title">Indicadores de Eficiencia</div>
         <div class="card-desc">Módulo de rendimiento y métricas clave en construcción.</div>
